@@ -1,4 +1,5 @@
-# indicators-of-compromise
+# Indicators of compromise (IOCs)
+
 Public indicators of compromise from Datadog Security Research
 
 ## Available indicators of compromise
