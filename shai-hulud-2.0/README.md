@@ -23,6 +23,10 @@ As part of this incident, a number of vendors reported on their IOCs. However, d
 - https://www.reversinglabs.com/blog/another-shai-hulud-npm-worm-is-spreading-heres-what-you-need-to-know   
 - https://helixguard.ai/blog/malicious-sha1hulud-2025-11-24
 
+We have ignored vendors reporting on compromised packages without providing package versions.
+
+Format: If multiple versions of a single package were backdoored, versions are aggregated. This means that each package name is unique in the CSV file, and each vendor is included in the vendors list having reported on it if they reported on at least one version.
+
 We have manually removed the followed IOCs which we deem to be false positives:
 
 ```
