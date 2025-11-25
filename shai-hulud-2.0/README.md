@@ -10,7 +10,7 @@ Format: one tuple (package_name, package_version) per line. If multiple versions
 
 Last updated: 2025-11-24.
 
-## Consolidated community IOCs
+## Consolidated vendor IOCs
 
 As part of this incident, a number of vendors reported on their IOCs. However, defenders need consolidated lists spanning multiple vendors in order to achieve satisfying coverage.
 
@@ -22,6 +22,8 @@ As part of this incident, a number of vendors reported on their IOCs. However, d
 - https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack
 - https://www.reversinglabs.com/blog/another-shai-hulud-npm-worm-is-spreading-heres-what-you-need-to-know   
 - https://helixguard.ai/blog/malicious-sha1hulud-2025-11-24
+
+*Last retrieved: 2025-11-25 at 7pm UTC*
 
 We have ignored vendors reporting on compromised packages without providing package versions.
 
