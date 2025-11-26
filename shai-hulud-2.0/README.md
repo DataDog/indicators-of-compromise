@@ -10,7 +10,7 @@ Format: one tuple (package_name, package_version) per line. If multiple versions
 
 Last updated: 2025-11-24.
 
-## Consolidated vendor IOCs
+### Consolidated vendor IOCs
 
 As part of this incident, a number of vendors reported on their IOCs. However, defenders need consolidated lists spanning multiple vendors in order to achieve satisfying coverage.
 
