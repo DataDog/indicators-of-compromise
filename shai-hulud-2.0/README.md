@@ -23,7 +23,7 @@ As part of this incident, a number of vendors reported on their IOCs. However, d
 - https://www.reversinglabs.com/blog/another-shai-hulud-npm-worm-is-spreading-heres-what-you-need-to-know   
 - https://helixguard.ai/blog/malicious-sha1hulud-2025-11-24
 
-*Last retrieved: 2025-11-25 at 7pm UTC*
+*Last retrieved: 2025-11-26 at 1:30pm UTC*
 
 We have ignored vendors reporting on compromised packages without providing package versions.
 
