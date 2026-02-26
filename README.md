@@ -6,3 +6,4 @@ Public indicators of compromise from Datadog Security Research
 
 - [Shai Hulud 2.0 campaign](./shai-hulud-2.0/)
 - [React2Shell (CVE-2025-55182)](./react-CVE-2025-55182/)
+- [1Phish 1Password phishing campaign](./1Phish/)
