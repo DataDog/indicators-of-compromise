@@ -1,5 +1,6 @@
 artifact_type,name,affected_versions
 pypi package,litellm,"1.82.7, 1.82.8"
+pypi package,telnyx,"4.87.1, 4.87.2"
 docker image,aquasec/trivy,"0.69.4, 0.69.5, 0.69.6"
 docker image,ghcr.io/aquasecurity/trivy,"0.69.4, 0.69.5, 0.69.6"
 docker image,docker.io/aquasec/trivy,"0.69.4, 0.69.5, 0.69.6"
