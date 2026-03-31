@@ -1,0 +1,20 @@
+type,indicator,context
+domain,sfrclak[.]com,"C2 domain, registered 2026-03-30 via Namecheap"
+ipv4,142.11.206.73,A record for sfrclak[.]com (Hostwinds)
+url,http://sfrclak[.]com:8000/6202033,Stage 2 download + C2 beacon endpoint
+user-agent,mozilla/4.0 (compatible; msie 8.0; windows nt 5.1; trident/4.0),Hardcoded in all RAT variants
+npm package,axios@1.14.1,Compromised release
+npm package,axios@0.30.4,Compromised release
+npm package,plain-crypto-js@4.2.1,Typosquat of crypto-js containing malicious postinstall script
+sha256,92ff08773995ebc8d55ec4b8e1a225d0d1e51efa4ef88b8849d0071230c9645a,macOS second-stage payload (Mach-O universal binary)
+sha256,617b67a8e1210e4fc87c92d1d1da45a2f311c08d26e89b12307cf583c900d101,Windows second-stage payload (PowerShell script)
+sha256,fcb81618bb15edfdedfb638b4c08a2af9cac9ecfa551af135a8402bf980375cf,Linux second-stage payload (Python script)
+filepath,/Library/Caches/com.apple.act.mond,macOS: downloaded binary disguised as Apple daemon
+filepath,$TMPDIR/6202033,macOS: AppleScript dropper (self-deleting)
+filepath,%PROGRAMDATA%\wt.exe,Windows: renamed copy of PowerShell
+filepath,%PROGRAMDATA%\system.bat,Windows: persistence script (re-fetches payload on login)
+registry,HKCU\Software\Microsoft\Windows\CurrentVersion\Run\MicrosoftUpdate,Windows: Run key for persistence
+filepath,%TEMP%\6202033.vbs,Windows: VBScript dropper (self-deleting)
+filepath,%TEMP%\6202033.ps1,Windows: downloaded PowerShell payload
+filepath,/tmp/ld.py,Linux: downloaded Python payload
+filepath,/tmp/.<random 6 chars>,Linux: binary dropped by peinject command
