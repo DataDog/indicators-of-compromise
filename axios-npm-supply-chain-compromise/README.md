@@ -4,7 +4,11 @@ See https://securitylabs.datadoghq.com/articles/axios-npm-supply-chain-compromis
 
 ## Identify if you're affected
 
-We provide two helper scripts to help you identify a potential compromise due to the malicious versions 1.14.1 and 0.30.4 of Axios: [Identify transitive dependencies that could have retrieved a malicious version](#identify-transitive-dependencies-that-could-have-retrieved-a-malicious-version), and [Retrieve logs from GitHub Actions](#retrieve-logs-from-github-actions).
+We provide two helper scripts to help you identify a potential compromise due to the malicious versions 1.14.1 and 0.30.4 of Axios: 
+
+- [Identify transitive dependencies that could have retrieved a malicious version](#identify-transitive-dependencies-that-could-have-retrieved-a-malicious-version)
+- [Retrieve logs from GitHub Actions](#retrieve-logs-from-github-actions).
+
 
 ### Identify transitive dependencies that could have retrieved a malicious version
 
