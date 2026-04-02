@@ -45,6 +45,7 @@ function extractFromNpmLock() {
   const lock = JSON.parse(readFileSync(join(targetDir, "package-lock.json"), "utf8"));
   const ranges = new Map();
 
+  // lockfileVersion 2/3: dependencies are in `packages`
   const packages = lock.packages || {};
   for (const [path, entry] of Object.entries(packages)) {
     const allDeps = {
@@ -57,6 +58,33 @@ function extractFromNpmLock() {
     const source = path ? path.replace(/^node_modules\//, "") : "(root)";
     if (!ranges.has(range)) ranges.set(range, []);
     ranges.get(range).push(source);
+  }
+
+  // lockfileVersion 1: dependencies are in top-level `dependencies` (recursive)
+  if (lock.dependencies) {
+    const walk = (deps, parentName) => {
+      for (const [name, entry] of Object.entries(deps)) {
+        if (name === pkg && entry.version) {
+          const range = entry.version;
+          const source = parentName || "(root)";
+          if (!ranges.has(range)) ranges.set(range, []);
+          if (!ranges.get(range).includes(source)) {
+            ranges.get(range).push(source);
+          }
+        }
+        if (entry.requires && entry.requires[pkg]) {
+          const range = entry.requires[pkg];
+          if (!ranges.has(range)) ranges.set(range, []);
+          if (!ranges.get(range).includes(name)) {
+            ranges.get(range).push(name);
+          }
+        }
+        if (entry.dependencies) {
+          walk(entry.dependencies, name);
+        }
+      }
+    };
+    walk(lock.dependencies, null);
   }
 
   return ranges;
@@ -116,7 +144,7 @@ function extractFromPnpmLock() {
     const depMatch = line.match(new RegExp(`['"]?${escaped}['"]?:\\s+([^\\s#]+)`));
     if (depMatch) {
       const range = depMatch[1].replace(/^['"]|['"]$/g, "");
-      if (/^\d+\.\d+\.\d+$/.test(range)) continue;
+      if (/^\d+\.\d+\.\d+$/.test(range) && !targets.includes(range)) continue;
       if (!ranges.has(range)) ranges.set(range, []);
       if (currentPkg && !ranges.get(range).includes(currentPkg)) {
         ranges.get(range).push(currentPkg);
