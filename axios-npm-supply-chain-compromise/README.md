@@ -4,7 +4,9 @@ See https://securitylabs.datadoghq.com/articles/axios-npm-supply-chain-compromis
 
 ## Identify if you're affected
 
-We provide two helper scripts to help you identify a potential compromise due to the malicious versions 1.14.1 and 0.30.4 of Axios: 
+**Disclaimer**: These scripts are provided as-is and on a best-effort basis. They may produce false negatives. A clean result does not guarantee that your environment was not affected.
+
+Two scripts help identify a potential compromise from the malicious Axios versions 1.14.1 and 0.30.4:
 
 - [Identify transitive dependencies that could have retrieved a malicious version](#identify-transitive-dependencies-that-could-have-retrieved-a-malicious-version)
 - [Retrieve logs from GitHub Actions](#retrieve-logs-from-github-actions).
@@ -12,7 +14,7 @@ We provide two helper scripts to help you identify a potential compromise due to
 
 ### Identify transitive dependencies that could have retrieved a malicious version
 
-The scripts under [check-dependencies-ranges/](./check-dependencies-ranges/) allow you to list transitive dependencies of a target project on your filesystem, identify which ones use Axios, and check whether any of them use a version constraint that could have resolved to a malicious Axios version.
+The scripts under [check-dependencies-ranges/](./check-dependencies-ranges/) list a project's transitive dependencies, identify which ones use Axios, and check whether any version constraint could have resolved to a malicious Axios version.
 
 **Supported package managers**: npm, Yarn, pnpm.
 
@@ -46,7 +48,7 @@ In this case, the output confirms that a developer who ran `yarn install` during
 
 ### Retrieve logs from GitHub Actions
 
-The scripts under [github-actions-logs/](./github-actions-logs/) allow you to identify all GitHub Actions workflows that ran when the malicious Axios versions were published, in order to analyze their logs and look for signs of compromise.
+The scripts under [github-actions-logs/](./github-actions-logs/) identify GitHub Actions workflows that ran while the malicious Axios versions were published, so you can analyze their logs for signs of compromise.
 
 **Requirements**: GitHub CLI installed and authenticated.
 
@@ -60,7 +62,7 @@ Fetch GitHub Actions jobs and logs for a repository (or entire org) within a dat
 options:
   -h, --help            show this help message and exit
   -r REPO, --repo REPO  Single repo (owner/repo)
-  --org ORG             GitHub org — scans all non-archived repos
+  --org ORG             GitHub org (scans all non-archived repos)
   -s START, --start START
                         Start UTC datetime (e.g. 2026-03-01T00:00:00Z)
   -e END, --end END     End UTC datetime (e.g. 2026-03-02T00:00:00Z)
@@ -85,7 +87,7 @@ uv run github-actions-logs/github-actions-logs.py --org ORG -o /tmp/logs --start
 uv run github-actions-logs/github-actions-logs.py --org ORG -o /tmp/logs --pushed-within-days 14 --start 2026-03-31T00:21:00Z --end 2026-03-31T03:25:00Z
 ```
 
-Sample output of a GitHub Actions workflow showing an `npm install` that pulled the malicious Axios version:
+**Sample output** of a workflow where `npm install` pulled the malicious Axios version:
 
 ```
 2026-03-31T03:04:40.4092421Z added 65 packages, and audited 66 packages in 3s
@@ -111,7 +113,7 @@ Sample output of a GitHub Actions workflow showing an `npm install` that pulled 
 - https://github.com/advisories/GHSA-fw8c-xr5c-95f9
 - https://github.com/axios/axios/issues/10604
 
-## Additional sources of indicators of compromise
+## Additional resources
 
 - https://www.invictus-ir.com/news/the-poisoned-pipeline-axios-supply-chain-attack
 - https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan
