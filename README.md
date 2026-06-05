@@ -9,3 +9,4 @@ Public indicators of compromise from Datadog Security Research
 - [React2Shell (CVE-2025-55182)](./react-CVE-2025-55182/)
 - [1Phish 1Password phishing campaign](./1Phish/)
 - [TeamPCP supply chain campaign](./teampcp/)
+- [Miasma Worm GitHub repository campaign](./miasma-worm-github-repo/)
